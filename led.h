@@ -39,6 +39,8 @@ void loop() {
     delay(5000);
     showGreen();
     delay(5000);
+    fireplace();
+    delay(5000);
 }
 
 void showRed() {
@@ -60,6 +62,26 @@ void showGreen() {
         strip.setPixelColor(i, 0, 0, 100);
     }
     strip.show();
+}
+
+void fireplace() {
+    int r = 255;
+    int g = 96;
+    int b = 12;
+
+    for(int x = 0; x <30; x++)
+    {
+        int flicker = random(0,40);
+        int r1 = r-flicker;
+        int g1 = g-flicker;
+        int b1 = b-flicker;
+        if(g1<0) g1=0;
+        if(r1<0) r1=0;
+        if(b1<0) b1=0;
+        strip.setPixelColor(x,r1,g1, b1);
+    }
+    strip.show();
+    delay(random(50,150));
 }
 
 // Fill the dots one after the other with a color
